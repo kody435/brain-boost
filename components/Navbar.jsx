@@ -1,21 +1,19 @@
 import React from 'react'
-
+import { ConnectWallet } from '@thirdweb-dev/react'
 
 const Navbar = () => {
     return (
-        <div className='grid grid-cols-3 bg-black text-white py-6 text-2xl place-items-center '>
-            <div className='flex content-start '>Brain Boost</div>
+        <div className='grid grid-cols-3 bg-black text-white py-4 text-2xl place-items-center items-center '>
+            <div className='flex text-3xl '>Brain Boost</div>
 
             <div className='flex flex-row space-x-6'>
                 <div className=''>Home</div>
+                <div className=''>Questions</div>
                 <div className=''>Rewards</div>
             </div>
 
-            <div className='flex flex-row flex-end space-x-2'>
-                <div className=''>Connect</div>
-                <div className=''>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-9"><path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
-                </div>
+            <div className='flex flex-row flex-end space-x-2 '>
+                <ConnectWallet colorMode='dark' />
             </div>
         </div>
     )
