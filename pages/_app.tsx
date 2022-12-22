@@ -9,8 +9,8 @@ const activeChainId = ChainId.Goerli;
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider  desiredChainId={activeChainId}>
-      <Component {...pageProps} />
       <Navbar />
+      <Component {...pageProps} />
     </ThirdwebProvider>
 )}
 

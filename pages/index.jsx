@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Ask_Ques from '../components/Ask_Ques'
+
 
 const Home = () => {
   return (
@@ -9,6 +11,7 @@ const Home = () => {
       </Head>
 
       <main className="">
+        <Ask_Ques />
       </main>
     </div>
   )
