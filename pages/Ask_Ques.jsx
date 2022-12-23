@@ -4,9 +4,9 @@ import styles from "../components/common.module.css"
 const Ask_Ques = () => {
     return (
         <div className={styles.quest}>
-            <div className='bg-gradient-to-bl from-sky-600 to-indigo-600 w-full h-full'>
+            <div className='bg-gradient-to-bl from-sky-600 to-indigo-600 w-screen h-screen'>
                 <div className='flex flex-col items-center justify-center h-screen'>
-                    <form className='h-96 w-96 items-center justify-center rounded-3xl ' >
+                    <form className='h-96 w-96 items-center justify-center rounded-3xl ' action='/' onSubmit="/" >
                         <div className='flex flex-col justify-center items-center '>
                             <table className='flex flex-col items-center justify-center h-72'>
                                 <tr className='flex flex-row w-full items-center justify-center text-center'>
@@ -20,7 +20,7 @@ const Ask_Ques = () => {
                                 </tr>
                             </table>
                             <div className='w-fit flex items-center justify-center py-3 text-center px-12 rounded-full  bg-black hover:bg-white text-white hover:text-black '>
-                                <button type='submit' className='py-2 text-center '>SUBMIT</button>
+                                <button type='submit' className='py-2 text-center font-bold '>SUBMIT</button>
                             </div>
                         </div>
                         
