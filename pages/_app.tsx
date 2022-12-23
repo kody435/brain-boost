@@ -4,7 +4,7 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import Navbar from '../components/Navbar'
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.Goerli;
+const activeChainId = ChainId.Polygon;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
