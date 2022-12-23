@@ -8,8 +8,8 @@ const Navbar = () => {
             <div className='flex text-3xl '>Brain Boost</div>
 
             <div className='flex flex-row space-x-6'>
-                <div className=''>Home</div>
-                <Link href="/"><div className=''>Questions</div></Link>
+                <Link href="/" ><div className=''>Home</div></Link>
+                <Link href="/Ask_Ques"><div className=''>Questions</div></Link>
                 <div className=''>Rewards</div>
             </div>
 
