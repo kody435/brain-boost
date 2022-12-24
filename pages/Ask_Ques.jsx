@@ -4,6 +4,7 @@ import styles from "../components/common.module.css"
 const Ask_Ques = () => {
     return (
         <div className={styles.quest}>
+            <title>Brain Boost</title>
             <div className='bg-gradient-to-bl from-sky-600 to-indigo-600 w-screen h-screen'>
                 <div className='flex flex-col items-center justify-center h-screen'>
                     <form className='h-96 w-96 items-center justify-center rounded-3xl ' action='/' onSubmit="/" >
