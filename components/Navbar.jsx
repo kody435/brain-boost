@@ -48,12 +48,7 @@ export default function NavBar() {
                     </div>
                 </div>
                 <div className="hidden space-x-2 md:inline-block">
-                    <Link
-                        href="javascript:void(0)"
-                        className="px-4 py-2 text-gray-800  rounded-md shadow hover:"
-                    >
-                        <ConnectWallet colorMode='dark' />
-                    </Link>
+                    <ConnectWallet colorMode='dark' />
                 </div>
             </div>
         </nav>
