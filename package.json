@@ -9,6 +9,7 @@
     "@heroicons/react": "^2.0.13",
     "@thirdweb-dev/react": "^3.6.8",
     "@thirdweb-dev/sdk": "^3.6.8",
+    "@vercel/analytics": "^0.1.6",
     "boxicons": "^2.1.4",
     "ethers": "^5.7.2",
     "heroicons": "^2.0.13",
