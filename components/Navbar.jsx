@@ -7,11 +7,11 @@ export default function NavBar() {
 
     return (
         <nav className="w-full bg-black shadow">
-            <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+            <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <Link href="/">
-                            <h2 className="text-2xl font-bold text-white">Brain Boost</h2>
+                            <h2 className="bg-clip-text text-transparent text-3xl font-bold text-white hover:text-gray-400 bg-gradient-to-r from-red-400 to-violet-400 ">Brain Boost</h2>
                         </Link>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>

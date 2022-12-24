@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import Home from '../components/Home'
 
-const Home = () => {
+const Main = () => {
   return (
     <div className="">
       <Head>
@@ -9,13 +10,10 @@ const Home = () => {
       </Head>
 
       <main>
-        <div className="flex flex-col text-center items-center justify-center w-screen h-screen ">
-          <h1 className="text-6xl font-bold">Brain Boost</h1>
-          <h2 className='text-3xl' >Home</h2>
-        </div>
+        <Home />
       </main>
     </div>
   )
 }
 
-export default Home
+export default Main
