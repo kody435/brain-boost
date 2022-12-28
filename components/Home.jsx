@@ -9,7 +9,7 @@ const Home = () => {
    
 
     return (
-        <div className='grid grid-cols-5 mt-10 '>
+        <div className='lg:grid flex flex-col lg:grid-cols-5 mt-10 '>
 
             <div className={styles.grid1}>
                 <h2 className='bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-violet-600 text-3xl flex justify-center mb-5'>Questions</h2>
