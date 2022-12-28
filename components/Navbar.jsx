@@ -6,7 +6,7 @@ export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
 
     return (
-        <nav className="w-full bg-zinc-900 shadow">
+        <nav className="w-full bg-slate-200 shadow">
             <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -27,13 +27,13 @@ export default function NavBar() {
                 <div>
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`} >
                         <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-lg font-bold ">
-                            <li className="text-white hover:text-blue-600">
+                            <li className="text-black hover:text-blue-600">
                                 <Link href="/">Home</Link>
                             </li>
-                            <li className="text-white hover:text-blue-600">
+                            <li className="text-black hover:text-blue-600">
                                 <Link href="/Ask_Ques">Ask Question</Link>
                             </li>
-                            <li className="text-white hover:text-blue-600">
+                            <li className="text-black hover:text-blue-600">
                                 <Link href="javascript:void(0)">AI</Link>
                             </li>
                         </ul>
@@ -44,7 +44,7 @@ export default function NavBar() {
                     </div>
                 </div>
                 <div className="hidden space-x-2 md:inline-block">
-                    <ConnectWallet colorMode='dark' />
+                    <ConnectWallet colorMode='light' accentColor="#E2E8F0" />
                 </div>
             </div>
         </nav>
