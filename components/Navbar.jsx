@@ -11,7 +11,7 @@ export default function NavBar() {
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <Link href="/">
-                            <h2 className="bg-clip-text text-transparent text-3xl font-bold text-white hover:text-gray-400 bg-gradient-to-r from-red-400 to-violet-400 ">Brain Boost</h2>
+                            <h2 className="bg-clip-text text-transparent text-3xl font-bold bg-gradient-to-r from-red-400 to-violet-400 ">Brain Boost</h2>
                         </Link>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>

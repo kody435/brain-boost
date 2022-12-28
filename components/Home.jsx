@@ -12,7 +12,7 @@ const Home = () => {
         <div className='grid grid-cols-5 mt-10 '>
 
             <div className={styles.grid1}>
-                <h2 className='bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-violet-600 text-3xl flex justify-center text-white mb-5'>Questions</h2>
+                <h2 className='bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-violet-600 text-3xl flex justify-center mb-5'>Questions</h2>
                 <div className='text-white mb-5 '>
                     {questions.map((question, index) => (
                         <div key={index} className="mx-8 my-2 space-y-4 flex flex-row justify-start items-center space-x-4 p-5 text-xl font-medium bg-gradient-to-l from-sky-600 to-indigo-600 rounded-xl drop-shadow-xl">
@@ -24,7 +24,7 @@ const Home = () => {
 
             
             <div className={styles.grid2}>
-                <h2 className='text-3xl bg-zinc-900 text-white flex justify-center p-screen bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-violet-600'>Leaderboard</h2>
+                <h2 className='text-3xl bg-zinc-900 flex justify-center p-screen bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-violet-600'>Leaderboard</h2>
                 <div className='mb-5 '>
                     {users.map((user, index) => (
                         <div key={index} className="bg-white flex justify-center flex-row m-4 space-x-4 p-4 text-xl font-medium rounded-xl drop-shadow-xl bg-gradient-to-r from-violet-700 to-fuchsia-800">
