@@ -1,9 +1,61 @@
-import { useState } from "react";
-import { ConnectWallet } from '@thirdweb-dev/react'
-import Link from "next/link";
+import { ethers } from "ethers"
+import Link from "next/link"
+import { useState, useEffect } from "react"
 
 export default function NavBar() {
-    const [navbar, setNavbar] = useState(false);
+    const [navbar, setNavbar] = useState(false)
+    const [user, setUser] = useState("")
+
+    const connectWallet = async () => {
+		try {
+			const { ethereum } = window;
+
+			if (!ethereum) {
+				alert("Get MetaMask -> https://metamask.io/");
+				return;
+			}
+
+			const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+
+			console.log("Connected", accounts[0]);
+			setUser(accounts[0]);
+		} catch (error) {
+			console.log(error);
+		}
+    };
+    
+    const checkIfWalletIsConnected = async () => {
+		const { ethereum } = window;
+
+		if (!ethereum) {
+			console.log("Make sure you have metamask!");
+			return;
+		} else {
+			console.log("We have the ethereum object", ethereum);
+		}
+
+		const accounts = await ethereum.request({ method: "eth_accounts" });
+
+		if (accounts.length !== 0) {
+			const account = accounts[0];
+			console.log("Found an authorized account:", account);
+			setUser(account);
+		} else {
+			console.log("No authorized account found");
+		}
+    };
+
+    useEffect(() => {
+		checkIfWalletIsConnected();
+	}, []);
+    
+    const renderNotConnectedContainer = () => (
+		<div className="connect-container">
+			<button onClick={connectWallet} className="font-bold bg-black p-4 text-white rounded-2xl">
+				Connect Wallet
+			</button>
+		</div>
+    );
 
     return (
         <nav className="w-full bg-slate-200 shadow">
@@ -39,8 +91,16 @@ export default function NavBar() {
                         </ul>
                     </div>
                 </div>
-                <div className="hidden space-x-2 md:inline-block">
-                    <ConnectWallet colorMode='light' accentColor="#E2E8F0" />
+                <div className="hidden space-x-2 md:inline-block" onClick={connectWallet}>
+                    {user ? (
+								<div className="font-bold bg-black p-4 text-white rounded-2xl" >
+									Wallet: {user.slice(0, 4)}...{user.slice(-4)}{" "}
+								</div>
+							) : (
+								<p></p>
+                    )}
+                    
+                    {!user && renderNotConnectedContainer()}
                 </div>
             </div>
         </nav>
