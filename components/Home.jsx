@@ -42,14 +42,14 @@ const Home = () => {
     }, [initDB])
 
     return (
-        <div className='lg:grid flex flex-col lg:grid-cols-5 mt-10 '>
+        <div className='lg:grid flex flex-col lg:grid-cols-7 mt-10 '>
 
             <div className={styles.grid1}>
                 <h2 className='bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-violet-600 text-3xl flex justify-center mb-5'>Questions</h2>
                 <div className='text-white mb-5 '>
                     {map(v => (
                         <div className="text-white mx-8 my-2 space-y-4 flex flex-row justify-start items-center space-x-4 p-5 text-xl font-medium bg-gradient-to-l from-sky-600 to-indigo-600 rounded-xl drop-shadow-xl">
-                            <div className='bg-transparent'>Title : {v.data.title}</div>
+                            <div className='bg-transparent'>{v.data.title}</div>
                         </div>
                     ))(Questions)}
                 </div>
