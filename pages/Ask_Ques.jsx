@@ -1,8 +1,59 @@
-import React from 'react'
+import React,{useState , useEffect, useRef} from 'react'
 import styles from "../components/common.module.css"
+import WeaveDB from "weavedb-sdk"
+import SDK from 'weavedb-sdk'
+
+let db
+const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
 
 const Ask_Ques = () => {
+    const [user, setUser] = useState([]);
+    let title = useRef()
+    let question = useRef()
+    const [initDB, setInitDB] = useState(false)
 
+    const setupWeaveDB = async () => {
+        window.Buffer = Buffer
+        db = new SDK({
+            contractTxId
+        })
+        await db.initializeWithoutWallet()
+        setInitDB(true)
+    }
+
+    useEffect(() => {
+        setupWeaveDB()
+    }, [])
+    
+    const checkIfWalletIsConnected = async () => {
+		const { ethereum } = window;
+
+		if (!ethereum) {
+			console.log("Make sure you have metamask!");
+			return;
+		} else {
+			console.log("We have the ethereum object", ethereum);
+		}
+
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        setUser(accounts)
+
+		if (accounts.length !== 0) {
+			const account = accounts[0];
+			console.log("Found an authorized account:", account);
+			setUser(account);
+		} else {
+			console.log("No authorized account found");
+		}
+    };
+
+    useEffect(() => {
+		checkIfWalletIsConnected();
+    }, []);
+    
+    const addQuestion = async() => {
+        await db.add({ title, user_address: db.signer() }, "Questions", user)
+    }
     
     return (
         <div className={styles.quest}>
@@ -10,24 +61,34 @@ const Ask_Ques = () => {
             <div className='bg-gradient-to-bl from-sky-500 to-indigo-600 w-screen h-screen'>
                 <div className='flex flex-col items-center justify-center h-screen'>
                 <h1 className='text-center items-center text-3xl  bg-clip-text text-transparent bg-gradient-to-l from-green-600 to-blue-500 '>Submit question here</h1>
-                    <form className='h-96 w-96 items-center justify-center rounded-3xl ' action='/' onSubmit="/" >
+                    <div className='h-96 w-96 items-center justify-center rounded-3xl '>
                         <div className='flex flex-col justify-center items-center '>
                             <table className='flex flex-col items-center justify-center h-72'>
                                 <tr className='flex flex-row w-full items-center justify-center text-center '>
                                     <td className='text-xl mr-6 text-black '>Title</td>
-                                    <td className='rounded-2xl'><input type="text" className='text-xl w-56 lg:w-80 rounded-3xl px-4 py-2 bg-white'placeholder="Enter New Task"/></td>
+                                    <td className='rounded-2xl'>
+                                        <input type="text" className='text-xl w-56 lg:w-80 rounded-3xl px-4 py-2 bg-white' placeholder="Write the shortest title as per question" value={title.current} />
+                                    </td>
                                 </tr>
                                 <br></br>
                                 <tr className='flex flex-row w-full items-center justify-center'>
                                     <td className='text-xl mr-3 text-black '>Question</td>
-                                    <td className='rounded-3xl text-xl'><textarea type="text" className='w-full lg:w-80 rounded-2xl px-4 py-2 bg-white' /></td>
+                                    <td className='rounded-3xl text-xl'>
+                                        <textarea type="text" className='w-full lg:w-80 rounded-2xl px-4 py-2 bg-white' placeholder='Explain the whole question in detail here' value={question.current} />
+                                    </td>
                                 </tr>
                             </table>
-                            <div className='w-fit flex items-center justify-center py-3 text-center px-12 rounded-full border-2 border-white hover:bg-black hover:border-blue-700 bg-white text-black hover:text-white duration-700'>
-                                <button className='py-2 text-center font-bold '>SUBMIT</button>
+                            <div className='w-fit flex items-center justify-center font-bold py-5 text-center px-12 rounded-full border-2 border-white hover:bg-black hover:border-blue-700 bg-white text-black hover:text-white duration-700'
+                                onClick={
+                                    async () => {
+                                        await addQuestion(title.current, question.current)
+                                    }
+                                }
+                            >
+                                SUBMIT
                             </div>
                         </div>  
-                    </form>
+                    </div>
                 </div>  
             </div>
         </div>
