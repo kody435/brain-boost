@@ -52,7 +52,7 @@ const Ask_Ques = () => {
     }, []);
     
     const addQuestion = async() => {
-        await db.add({ title, user_address: db.signer() }, "Questions", user)
+        await db.add({ title, question, user_address: db.signer() }, "Questions", user)
     }
     
     return (
