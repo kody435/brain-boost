@@ -8,7 +8,7 @@ const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
 
 const Ask_Ques = () => {
     const [user, setUser] = useState([]);
-    let title = useRef()
+    // let title = useRef()
     let question = useRef()
     const [initDB, setInitDB] = useState(false)
 
