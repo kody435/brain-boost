@@ -86,7 +86,7 @@ export default function NavBar() {
                                 <Link href="/Ask_Ques">Ask Question</Link>
                             </li>
                             <li className="text-black hover:text-blue-600">
-                                <Link href="javascript:void(0)">AI</Link>
+                                <Link href="/">Chat</Link>
                             </li>
                         </ul>
                     </div>
