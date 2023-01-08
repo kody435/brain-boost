@@ -51,11 +51,7 @@ const Ask_Ques = () => {
     }, []);
     
     const addQuestion = async(e) => {
-        e.preventDefault()
-        await db.add({ title: titles, question: questions, user: user }, "Questions", {wallet: user})
-        
-        // Uncomment the below line to see the data in the console and comment the above line
-        // console.log("title", "=", titles, "question"," =", questions, "user", "=", user,"Questions")
+        await db.add({ title: titles, question: questions, user_address: user }, "Questions")
     }
     
     return (
