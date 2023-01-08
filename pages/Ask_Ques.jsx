@@ -48,9 +48,12 @@ const Ask_Ques = () => {
 		checkIfWalletIsConnected();
     }, []);
     
-    const addQuestion = (e) => {
+    const addQuestion = async(e) => {
         e.preventDefault()
-        console.log(titles, questions)
+        await db.add({ title: titles, question: questions, user: user }, "Questions")
+        
+        // Uncomment the below line to see the data in the console and comment the above line
+        // console.log("title", "=", titles, "question"," =", questions, "user", "=", user,"Questions")
     }
     
     return (
