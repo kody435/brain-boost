@@ -25,16 +25,18 @@ const Ask_Ques = () => {
     }, [])
     
     const checkIfWalletIsConnected = async () => {
-		const { ethereum } = window;
+        const { ethereum } = window;
+        
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        setUser(accounts)
 
 		if (!ethereum) {
 			console.log("Make sure you have metamask!");
 			return;
 		} else {
 			console.log("We have the ethereum object", ethereum);
-		}
-        const accounts = await ethereum.request({ method: "eth_accounts" });
-        setUser(accounts)
+        }
+
 		if (accounts.length !== 0) {
 			const account = accounts[0];
 			console.log("Found an authorized account:", account);
@@ -50,7 +52,7 @@ const Ask_Ques = () => {
     
     const addQuestion = async(e) => {
         e.preventDefault()
-        await db.add({ title: titles, question: questions, user: user }, "Questions")
+        await db.add({ title: titles, question: questions, user: user }, "Questions", {wallet: user})
         
         // Uncomment the below line to see the data in the console and comment the above line
         // console.log("title", "=", titles, "question"," =", questions, "user", "=", user,"Questions")
