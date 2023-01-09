@@ -22,6 +22,9 @@ const Ask_Ques = () => {
     }
     useEffect(() => {
         setupWeaveDB()
+        var str = titles;
+        str = str.replace(/\s+/g, '-').toLowerCase();
+        console.log(str)
     }, [])
     
     const checkIfWalletIsConnected = async () => {
@@ -55,7 +58,7 @@ const Ask_Ques = () => {
         const accounts = await ethereum.request({ method: "eth_accounts" });
 
         if (accounts.length !== 0) {
-            await db.add({ title: titles, question: questions, user_address: user }, "Questions")
+            await db.add({ title: titles, question: questions, user_address: user, slug: titles.split(" ").join("-").toLowerCase() }, "Questions")
         } else {
             alert("Make sure you have metamask or you haven't connected it!");
 			return;

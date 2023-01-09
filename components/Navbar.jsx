@@ -57,6 +57,7 @@ export default function NavBar() {
 		</div>
     );
 
+
     return (
         <nav className="w-full bg-slate-200 shadow">
             <div className="justify-between px-4 md:grid-cols-3 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
