@@ -1,1 +1,1 @@
-
+Asset management on a blockchain network helps to solve the problems of dispute resolution and improve the time it takes to solve discrepancies in data. The consensus-based nature of the technology means that updates cannot occur to asset records without agreement from all relevant parties.
