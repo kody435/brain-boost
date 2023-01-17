@@ -1,5 +1,5 @@
 // import SDK from "weavedb-node-client";
-import WeaveDB from "weavedb-client"
+import WeaveDB from "weavedb-client";
 
 export async function getServerSideProps({ query }) {
   // const db = new SDK({
@@ -8,7 +8,7 @@ export async function getServerSideProps({ query }) {
   // });
   const db = new WeaveDB({
     contractTxId: "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o",
-    rpc: "http://localhost:8080"
+    rpc: "http://localhost:8080",
   });
   return {
     props: { question: await db.get("Questions", query.id) },
