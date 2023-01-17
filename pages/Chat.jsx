@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 let db;
 const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
-// db = new WeaveDB({ contractTxId: contractTxId, rpc: "http://localhost:8080" });
 
 const Chat = () => {
   const [loading, setLoading] = useState(true);
