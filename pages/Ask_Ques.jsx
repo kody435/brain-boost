@@ -1,7 +1,8 @@
 import React,{useState , useEffect, useRef} from 'react'
 import styles from "../components/common.module.css"
 import WeaveDB from "weavedb-sdk"
-import SDK from 'weavedb-sdk'
+// import SDK from 'weavedb-sdk'
+import WeaveDB from "weavedb-client"
 
 let db
 const contractTxId= "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o"
@@ -14,8 +15,12 @@ const Ask_Ques = () => {
 
     const setupWeaveDB = async () => {
         window.Buffer = Buffer
-        db = new SDK({
-            contractTxId
+        // db = new SDK({
+        //     contractTxId
+        // })
+        WeaveDB({
+            contractTxId: contractTxId,
+            rpc: "http://localhost:8080"
         })
         await db.initializeWithoutWallet()
         setInitDB(true)
