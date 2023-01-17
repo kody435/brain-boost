@@ -17,11 +17,12 @@ const Ask_Ques = () => {
         // db = new SDK({
         //     contractTxId
         // })
+        // await db.initializeWithoutWallet()
         db = new WeaveDB({
             contractTxId: contractTxId,
             rpc: "http://localhost:8080"
         })
-        await db.initializeWithoutWallet()
+        
         setInitDB(true)
     }
     useEffect(() => {
@@ -58,6 +59,7 @@ const Ask_Ques = () => {
     }, []);
     
     const addQuestion = async (e) => {
+        console.log("addQuestion")
         const { ethereum } = window;
         const accounts = await ethereum.request({ method: "eth_accounts" });
 

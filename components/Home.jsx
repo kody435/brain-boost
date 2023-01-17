@@ -28,11 +28,12 @@ const Home = () => {
         // db = new SDK({
         //     contractTxId
         // })
+        // await db.initializeWithoutWallet()
         WeaveDB({
             contractTxId: contractTxId,
             rpc: "http://localhost:8080"
         })
-        await db.initializeWithoutWallet()
+        
         setInitDB(true)
     }
     useEffect(() => {
