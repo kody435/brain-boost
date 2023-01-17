@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../components/common.module.css";
 import SDK from "weavedb-sdk";
-// import WeaveDB from "weavedb-client"
+// import WeaveDB from "weavedb-client";
 
 let db;
 const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
@@ -11,6 +11,7 @@ const Ask_Ques = () => {
   const [titles, setTitles] = useState("");
   const [questions, setQuestions] = useState("");
   const [initDB, setInitDB] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
@@ -19,9 +20,9 @@ const Ask_Ques = () => {
     });
     await db.initializeWithoutWallet();
     // db = new WeaveDB({
-    //     contractTxId: contractTxId,
-    //     rpc: "http://localhost:8080"
-    // })
+    //   contractTxId: contractTxId,
+    //   rpc: "http://localhost:8080",
+    // });
 
     setInitDB(true);
   };
@@ -64,16 +65,19 @@ const Ask_Ques = () => {
 
     if (accounts.length !== 0) {
       console.log("addQuestion");
-      const ret = await db.add(
+      setLoading(true)
+
+         const ret = await db.add(
         {
-          title: titles,
-          question: questions,
-          user_address: user,
-          slug: titles.split(" ").join("-").toLowerCase(),
+            title: titles,
+            question: questions,
+            user_address: user,
+            slug: titles.split(" ").join("-").toLowerCase(),
         },
         "Questions"
       );
       console.log("ret: ", ret);
+      setLoading(false)
     } else {
       alert("Make sure you have metamask or you haven't connected it!");
       return;
@@ -124,6 +128,7 @@ const Ask_Ques = () => {
               <div
                 className="w-fit flex items-center justify-center font-bold py-5 text-center px-12 rounded-full border-2 border-white hover:bg-black hover:border-blue-700 bg-white text-black hover:text-white duration-700"
                 onClick={addQuestion}
+                disabled={loading}
               >
                 SUBMIT
               </div>

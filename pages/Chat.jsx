@@ -15,7 +15,7 @@ const Chat = () => {
         contractTxId: contractTxId,
         rpc: "http://localhost:8080",
       });
-      setQuestions((await db.get("Questions", 10)).length > 0);
+      setQuestions(await db.get("Questions", 10));
       console.log("questions: ", questions);
       setLoading(false);
     })();
@@ -31,7 +31,7 @@ const Chat = () => {
           <>
             {Object.keys(questions).map((k) => {
               const q = questions[k];
-              return <>{q.title}</>;
+              return <><div>{q.title}</div></>;
             })}
           </>
         )}
