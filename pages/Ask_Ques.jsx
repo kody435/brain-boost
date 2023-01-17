@@ -1,6 +1,5 @@
 import React,{useState , useEffect, useRef} from 'react'
 import styles from "../components/common.module.css"
-import WeaveDB from "weavedb-sdk"
 // import SDK from 'weavedb-sdk'
 import WeaveDB from "weavedb-client"
 
@@ -18,7 +17,7 @@ const Ask_Ques = () => {
         // db = new SDK({
         //     contractTxId
         // })
-        WeaveDB({
+        db = new WeaveDB({
             contractTxId: contractTxId,
             rpc: "http://localhost:8080"
         })
