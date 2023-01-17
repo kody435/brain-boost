@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import LandingPage from '../components/LandingPage'
+import Head from "next/head";
+import LandingPage from "../components/LandingPage";
 
 const Main = () => {
   return (
@@ -13,7 +13,7 @@ const Main = () => {
         <LandingPage />
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

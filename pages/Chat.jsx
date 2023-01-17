@@ -1,9 +1,43 @@
-import React from 'react'
+import React, { useState } from "react";
+import WeaveDB from "weavedb-client";
+import { useEffect } from "react";
+
+let db;
+const contractTxId = "sPyXyPDKw9uKFs43y7HFvsnKUE7bht3DkBNKA5UcV_o";
 
 const Chat = () => {
-  return (
-    <div>Chat</div>
-  )
-}
+  const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState([]);
 
-export default Chat
+  useEffect(() => {
+    (async () => {
+      const db = new WeaveDB({
+        contractTxId: contractTxId,
+        rpc: "http://localhost:8080",
+      });
+      setQuestions(await db.get("Questions", 10));
+      console.log("questions: ", questions);
+      setLoading(false);
+    })();
+  }, []);
+
+  return (
+    <>
+      <div>Chat</div>
+      <div>
+        {loading ? (
+          <>loading...</>
+        ) : (
+          <>
+            {Object.keys(questions).map((k) => {
+              const q = questions[k];
+              return <><div>{q.title}</div></>;
+            })}
+          </>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default Chat;
