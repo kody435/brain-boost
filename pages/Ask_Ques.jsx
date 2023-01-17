@@ -59,12 +59,13 @@ const Ask_Ques = () => {
     }, []);
     
     const addQuestion = async (e) => {
-        console.log("addQuestion")
         const { ethereum } = window;
         const accounts = await ethereum.request({ method: "eth_accounts" });
 
         if (accounts.length !== 0) {
-            await db.add({ title: titles, question: questions, user_address: user, slug: titles.split(" ").join("-").toLowerCase() }, "Questions")
+            console.log("addQuestion")
+            const ret = await db.add({ title: titles, question: questions, user_address: user, slug: titles.split(" ").join("-").toLowerCase() }, "Questions")
+            console.log("ret: ", ret)
         } else {
             alert("Make sure you have metamask or you haven't connected it!");
 			return;
