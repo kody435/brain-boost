@@ -2,7 +2,9 @@ import styles from './common.module.css'
 import { useEffect, useState } from "react"
 import { Buffer } from "buffer"
 import { map } from "ramda"
-import SDK from 'weavedb-sdk'
+// import SDK from 'weavedb-sdk' 
+import WeaveDB from "weavedb-client"
+
 import Link from 'next/link'
 
 let db;
@@ -23,8 +25,12 @@ const Home = () => {
     
     const setupWeaveDB = async () => {
         window.Buffer = Buffer
-        db = new SDK({
-            contractTxId
+        // db = new SDK({
+        //     contractTxId
+        // })
+        WeaveDB({
+            contractTxId: contractTxId,
+            rpc: "http://localhost:8080"
         })
         await db.initializeWithoutWallet()
         setInitDB(true)
