@@ -15,8 +15,7 @@ const Chat = () => {
         contractTxId: contractTxId,
         rpc: "http://localhost:8080",
       });
-      setQuestions(await db.get("Questions", 10));
-      console.log("questions: ", questions);
+      setQuestions(await db.get("Questions", 10));;
       setLoading(false);
     })();
   }, []);

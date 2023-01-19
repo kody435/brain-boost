@@ -28,9 +28,6 @@ const Ask_Ques = () => {
   };
   useEffect(() => {
     setupWeaveDB();
-    var str = titles;
-    str = str.replace(/\s+/g, "-").toLowerCase();
-    console.log(str);
   }, []);
 
   const checkIfWalletIsConnected = async () => {
@@ -67,7 +64,7 @@ const Ask_Ques = () => {
       console.log("addQuestion");
       setLoading(true)
 
-         const ret = await db.add(
+         const query = await db.add(
         {
             title: titles,
             question: questions,
@@ -76,7 +73,7 @@ const Ask_Ques = () => {
         },
         "Questions"
       );
-      console.log("ret: ", ret);
+      console.log("query: ", query);
       setLoading(false)
     } else {
       alert("Make sure you have metamask or you haven't connected it!");

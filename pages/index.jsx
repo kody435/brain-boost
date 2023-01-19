@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LandingPage from "../components/LandingPage";
+import Home from "../components/Home";
 
 const Main = () => {
   return (
@@ -10,7 +10,7 @@ const Main = () => {
       </Head>
 
       <main>
-        <LandingPage />
+        <Home />
       </main>
     </div>
   );

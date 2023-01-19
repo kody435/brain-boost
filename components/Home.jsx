@@ -2,7 +2,7 @@ import styles from "./common.module.css";
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { map } from "ramda";
-// import SDK from 'weavedb-sdk'
+import SDK from 'weavedb-sdk'
 import WeaveDB from "weavedb-client";
 
 import Link from "next/link";
@@ -25,14 +25,10 @@ const Home = () => {
 
   const setupWeaveDB = async () => {
     window.Buffer = Buffer;
-    // db = new SDK({
-    //     contractTxId
-    // })
-    // await db.initializeWithoutWallet()
-    WeaveDB({
-      contractTxId: contractTxId,
-      rpc: "http://localhost:8080",
-    });
+    db = new SDK({
+        contractTxId
+    })
+    await db.initializeWithoutWallet()
 
     setInitDB(true);
   };
